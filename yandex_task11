@@ -1,0 +1,21 @@
+tickets=[]
+with open('/home/yulic/Jupyter/yandex/input.txt') as file_object:
+    for line in file_object:
+        tickets.append(line.rstrip())
+
+happy = []
+counter=0
+average=0
+for ticket in tickets:
+    sum1=0
+    sum2=0
+    for element in ticket[0:3]:
+        sum1=sum1 + int(element)
+    for element in ticket[3:6]:
+        sum2=sum2 + int(element)
+    if sum1 == sum2:
+        counter +=1
+        average += (sum1 + sum2)
+
+with open('/home/yulic/Jupyter/yandex/output.txt', 'w') as file_object:
+    file_object.write('{} \n{:.2f}'.format(counter, average/(6*counter)))
